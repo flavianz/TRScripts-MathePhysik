@@ -2,14 +2,22 @@ import math
 
 mode = input("Distanzen (d / 1), Winkel (w / 2) oder Geschwindigkeit (g / 3) ? ")
 
-if mode == "d" or mode == "D" or mode == "1":
-    v0 = float(input("V0 in m/s: "))
-    winkel = float(input("Winkel in °: "))
-    ymax = ((v0 * math.sin(math.radians(winkel))) ** 2) / (9.81 * 2)
-    xw = (v0 ** 2) * math.sin(2 * math.radians(winkel)) / 9.81
+def is_empty(val):
+    return val == "" or val == " "
 
-    print("Y-max: " + str(ymax) + " m\nX-w: " + str(xw) + " m")
-if mode == "w" or mode == "W" or mode == "2":
-    vorhanden = input("Vorhanden: Y-max (y / 1) oder X-w (x / 2) ? ")
-    if vorhanden == "y" or vorhanden == "Y" or vorhanden == "1":
-        
+if mode == "d" or mode == "D" or mode == "1":
+    v0 = input("V0 in m/s: ")
+    winkel = input("Winkel in °: ")
+    t = input("Zeit in s: ")
+    ymax = input("Y-max in m: ")
+    xw = input("X-w in m: ")
+    if is_empty(v0):
+        if is_empty(winkel):
+            print("Benötige Winkel zur Kalkulation der Seite")
+        else:
+            if not is_empty(xw):
+                v0 = math.sqrt(float(xw) * 9.81 /
+                               math.sin(math.radians(2 * float(winkel))))
+                print(f"\nV0 = sqrt({xw} * 9.81 / sin(2 * {winkel}))\n" +
+                      f"V0 = {v0}")
+
