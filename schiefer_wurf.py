@@ -13,14 +13,16 @@ while True:
         winkel = float(input("Winkel in °: "))
         v0x = v0 * math.cos(math.radians(winkel))
         v0y = v0 * math.sin(math.radians(winkel))
-        print("\nv0x = cos(" + str(winkel) + ")\n")
-        var = input("Zeit (1), x (2) oder Winkel (3)? ")
+        var = input("Zeit (1) oder x (2)? ")
         t = 0
+        print("\nv0x = cos(" + str(winkel) + ")")
+        print("\nv0y = sin(" + str(winkel) + ")\n")
         if var == "1":
             t = float(input("Zeit in s: "))
         elif var == "2":
             x = float(input("x in m: "))
             t = x / v0x
+            print("\nt = " + str(x) + " / " + str(v0x))
         elif var == "3":
             zwinkel = float(input("Zielwinkel in °: "))
             root_val = (v0 * math.sin(zwinkel)) ** 2
@@ -32,6 +34,11 @@ while True:
         winkelt = math.degrees(math.atan(vy / v0x))
         x = v0 * math.cos(math.radians(winkel)) * t
         y = v0 * math.sin(math.radians(winkel)) * t - (1 / 2) * 9.81 * (t ** 2)
+        print("\nv = sqrt(" + str(v0x) + " ^ 2) + ((" + str(v0y) + " - 9.81 * " + str(t) + ") ^ 2)")
+        print("\nvy = " + str(v0) + " * sin(" + str(winkel) + ") - 9.81 * " + str(t))
+        print("\na = tan^-1(" + str(vy) + " / " + str(v0x) + ")")
+        print("\nx = " + str(v0x) + " * " + str(t))
+        print("\ny = " + str(v0y) + " * " + str(t) + " - 1 / 2 * 9.81 * (" + str(t) + " ^ 2)")
         print("\nv: " + str(v) + "\na: " + str(winkelt) + "\nx: " + str(x) + "\ny: " + str(y) + "\nVy: " +
               str(vy) + "\nVx: " + str(v0x) + "\nV0y: " + str(v0y) + "\nV0x: " + str(v0x) + "\nt: " + str(t) + "\n")
 
@@ -84,6 +91,6 @@ while True:
         if is_empty(xw):
             if not is_empty(v0) and not is_empty(winkel):
                 xw = (float(v0) ** 2) * math.sin(math.radians(2 * float(winkel))) / 9.81
-                print("\nx-w = (" + v0 + " ^ 2) * sin(2 * " + winkel + ") / 9.81")
+                print("\nx-w = (" + str(v0) + " ^ 2) * sin(2 * " + str(winkel) + ") / 9.81")
         print("\nv0: " + str(v0) + "\na: " + str(winkel) + "\nt: " + str(t) + "\nY-max: " +
               str(ymax) + "\nX-w: " + str(xw) + "")
