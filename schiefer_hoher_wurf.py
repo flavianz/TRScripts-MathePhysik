@@ -21,4 +21,4 @@ elif mode == "2":
     v0y = v0 * math.sin(math.radians(a))
     t = w / v0x
     h = (v0y * t) - (1 / 2 * 9.81 * (t ** 2))
-
+    print("h: " + str(h) + "\nt: " + str(t))
