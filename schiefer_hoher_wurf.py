@@ -14,6 +14,7 @@ if mode == "1":
     # von hTotal zu Boden bei g = 9.81
     xmax = (float(v0) ** 2) * math.sin(math.radians(2 * float(a))) / 9.81
     xw = v0x * t  # Falldistanz aus t und v0x
+    print(ymax)
     print("X-w: " + str(xw) + "\nt: " + str(t) + "\nX-max: " + str(xmax) + "\nh: " + str(htotal))
 elif mode == "2":
     w = float(input("Weite in m: "))
@@ -21,4 +22,8 @@ elif mode == "2":
     v0y = v0 * math.sin(math.radians(a))
     t = w / v0x
     h = (v0y * t) - (1 / 2 * 9.81 * (t ** 2))
-    print("h: " + str(h) + "\nt: " + str(t))
+    print("\nv0x = " + str(v0) + " * cos(" + str(a) + ")")
+    print("\nv0y = " + str(v0) + " * sin(" + str(a) + ")")
+    print("\nt = " + str(w) + " / " + str(v0x))
+    print("\nh = (" + str(v0y) + " * " + str(t) + ") - (1 / 2 * 9.81 * (" + str(t) + "^ 2))")
+    print("\nv0x: " + str(v0x) + "\nv0y: " + str(v0y) + "\nt: " + str(t) + "\nh: " + str(h) + "\n")
